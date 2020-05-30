@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta4
+kind: Config
+build:
+  artifacts:
+    - image: qc-api
+      context: ./qc-api/
+deploy:
+  kubectl:
+    manifests:
+      - ./qc-api/kubernetes/*
+portForward:
+  - resourceType: deployment
+    resourceName: qc-api
+    address: 127.0.0.1
+    port: 8080
+    localPort: 9000
