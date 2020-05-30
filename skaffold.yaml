@@ -4,13 +4,24 @@ build:
   artifacts:
     - image: qc-api
       context: ./qc-api/
+    - image: qc-contracts
+      context: ./qc-contracts/
+    - image: qc-frontend
+      context: ./qc-frontend/
 deploy:
   kubectl:
     manifests:
       - ./qc-api/kubernetes/*
+      - ./qc-contracts/kubernetes/*
+      - ./qc-frontend/kubernetes/*
 portForward:
   - resourceType: deployment
     resourceName: qc-api
     address: 127.0.0.1
-    port: 8080
-    localPort: 9000
+    port: 5000
+    localPort: 5000
+  - resourceType: deployment
+    resourceName: qc-contracts
+    address: 127.0.0.1
+    port: 8888
+    localPort: 8888
