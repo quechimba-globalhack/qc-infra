@@ -2,24 +2,30 @@ apiVersion: skaffold/v2beta4
 kind: Config
 build:
   artifacts:
-    - image: qc-api
-      context: ./qc-api/
+    # - image: qc-api
+    # #   context: ./qc-api/
     - image: qc-contracts
       context: ./qc-contracts/
-    - image: qc-frontend
-      context: ./qc-frontend/
+    # - image: qc-frontend
+    #   context: ./qc-frontend/
+    #   sync:
+    #     manual:
+    #     - src: 'src/components/*'
+    #       dest: .
+    #     - src: 'src/tailwind/*'
+    #       dest: .
 deploy:
   kubectl:
     manifests:
-      - ./qc-api/kubernetes/*
+      # - ./qc-api/kubernetes/*
       - ./qc-contracts/kubernetes/*
-      - ./qc-frontend/kubernetes/*
+      # - ./qc-frontend/kubernetes/*
 portForward:
-  - resourceType: deployment
-    resourceName: qc-api
-    address: 127.0.0.1
-    port: 5000
-    localPort: 5000
+  # - resourceType: deployment
+  #   resourceName: qc-api
+  #   address: 127.0.0.1
+  #   port: 5000
+  #   localPort: 5000
   - resourceType: deployment
     resourceName: qc-contracts
     address: 127.0.0.1
