@@ -37,7 +37,7 @@ After having all dependencies installed you need to run the following steps:
 
 3. Running blockchain initialization scripts: connect to the running docker container in the contracts pod by running `kubectl exec -it [podname] -- /bin/bash` (Replace [podname] with the result form step 2) the command should look like this: 
 ```
-qc-contracts-6c44855478-8pgxn
+kubectl exec -it qc-contracts-6c44855478-8pgxn -- /bin/bash
 ```
 
 4. Run initialization scrips: Once inside the running container you now can initialize the demo data by running:
